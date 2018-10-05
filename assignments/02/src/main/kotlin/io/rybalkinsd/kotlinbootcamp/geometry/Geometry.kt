@@ -18,7 +18,7 @@ data class Point(val x: Int, val y: Int) : Collider {
         return when (other) {
             is Point -> other == this
             is Bar -> other.isContainsPoint(this)
-            else -> false //TODO: exception
+            else -> false
         }
     }
 }
@@ -54,7 +54,6 @@ class Bar(firstCornerX: Int, firstCornerY: Int, secondCornerX: Int, secondCorner
         return true
     }
 
-    //auto generated
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
