@@ -64,8 +64,8 @@ fun getAvgAge(profiles: Collection<RawProfile>): Map<DataSource, Double> {
  * TODO
  */
 
-fun getGroupedProfiles(profiles: Collection<RawProfile>): Map<Long, List<Profile>> {
-    val profiles = makeProfiles(profiles)
+fun getGroupedProfiles(rawProfiles: Collection<RawProfile>): Map<Long, List<Profile>> {
+    val profiles = makeProfiles(rawProfiles)
     val isSameProfile = { a: Profile, b: Profile ->
         a.firstName?.capitalize() == b.firstName?.capitalize() &&
                 a.lastName?.capitalize() == b.lastName?.capitalize() &&
@@ -138,6 +138,5 @@ fun getRawProfiles() = listOf(
 
 fun makeProfiles(source: Collection<RawProfile>): List<Profile> {
     var id = 0L
-    @Suppress("UNCHECKED_CAST")
-    return source.map { it.toProfile(id)?.also { id++ } }.filter { it != null } as List<Profile>
+    return source.map { it.toProfile(id)?.also { id++ } }.filterNotNull()
 }
