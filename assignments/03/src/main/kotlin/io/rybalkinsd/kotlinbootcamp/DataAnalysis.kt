@@ -9,11 +9,11 @@ enum class DataSource {
 }
 
 sealed class Profile(
-        var id: Long,
-        var firstName: String? = null,
-        var lastName: String? = null,
-        var age: Int? = null,
-        var dataSource: DataSource
+    var id: Long,
+    var firstName: String? = null,
+    var lastName: String? = null,
+    var age: Int? = null,
+    var dataSource: DataSource
 )
 
 /**
@@ -42,7 +42,6 @@ fun RawProfile.toProfile(id: Long): Profile? {
         age = dictData["age"]?.toIntOrNull()
     }
 }
-
 
 /**
  * Task #2
